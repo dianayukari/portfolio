@@ -31,16 +31,26 @@
 		<p class="index-label">{label}</p>
 	{/if}
 	<ul>
-		{#each works as work (work.slug)}
+		{#each works as work (work.slug ?? work.href)}
 			<li>
 				<a
 					class="row"
-					href="{base}/work/{work.slug}"
-					onpointerenter={() => (active = work.slug)}
-					onfocus={() => (active = work.slug)}
+					href={work.href ?? `${base}/work/${work.slug}`}
+					target={work.href ? '_blank' : undefined}
+					rel={work.href ? 'noopener' : undefined}
+					onpointerenter={() => (active = work.slug ?? work.href)}
+					onfocus={() => (active = work.slug ?? work.href)}
 					onblur={() => (active = null)}
 				>
-					<span class="row-title">{work.title}</span>
+					<span class="row-main">
+						<span class="row-title">{work.title}</span>
+						{#if work.status}
+							<span class="row-status">{work.status}</span>
+						{/if}
+						{#if work.href}
+							<span class="row-ext" aria-hidden="true">↗</span>
+						{/if}
+					</span>
 					<span class="row-year">{work.year}</span>
 				</a>
 			</li>
@@ -50,12 +60,12 @@
 	<!-- Cursor-following thumbnail. All covers are rendered once (so they're
 	     preloaded) and toggled by opacity for an instant, flicker-free reveal. -->
 	<div class="thumb" aria-hidden="true" style="transform: translate({x}px, {y}px)">
-		{#each works as work (work.slug)}
+		{#each works as work (work.slug ?? work.href)}
 			<img
 				src={resolve(work.cover)}
 				alt=""
 				loading="eager"
-				class:visible={active === work.slug}
+				class:visible={active === (work.slug ?? work.href)}
 				class:flip
 			/>
 		{/each}
@@ -76,11 +86,18 @@
 		padding: 0;
 	}
 	.row {
+		display: grid;
+		grid-template-columns: 1fr 5.5rem;
+		align-items: baseline;
+		column-gap: var(--space-3);
+		padding-block: 0.35rem;
+	}
+	/* Title + status grouped on the left, status hugging the title. */
+	.row-main {
 		display: flex;
 		align-items: baseline;
-		justify-content: space-between;
-		gap: var(--space-3);
-		padding-block: 0.35rem;
+		gap: 0.5rem;
+		min-width: 0;
 	}
 	.row-title {
 		text-decoration: underline;
@@ -92,8 +109,21 @@
 	.row:focus-visible .row-title {
 		text-decoration-color: currentColor;
 	}
-	.row-year {
+	.row-status {
 		flex: none;
+		font-size: var(--text-xs);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		color: var(--color-accent);
+	}
+	.row-ext {
+		flex: none;
+		font-size: var(--text-sm);
+		color: var(--color-muted);
+	}
+	.row-year {
+		text-align: right;
+		white-space: nowrap;
 		color: var(--color-muted);
 		font-size: var(--text-sm);
 		font-variant-numeric: tabular-nums;

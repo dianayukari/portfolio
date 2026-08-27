@@ -7,10 +7,17 @@ import thesis from './thesis.js';
 import earthquake from './earthquake.js';
 import folhaPrinted from './folha-printed.js';
 import folhaInteractive from './folha-interactive.js';
-import tsDataAnalysis from './ts-data-analysis.js';
+import TsIpcc from './ts-ipcc.js';
 
-export const works = [thesis, earthquake, folhaPrinted, folhaInteractive, tsDataAnalysis];
+export const works = [
+	thesis,
+	earthquake,
+	folhaPrinted,
+	folhaInteractive,
+	TsIpcc
+];
 
-export const bySlug = Object.fromEntries(works.map((w) => [w.slug, w]));
+// Only internal works have a slug; external-link works are looked up by URL.
+export const bySlug = Object.fromEntries(works.filter((w) => w.slug).map((w) => [w.slug, w]));
 
 export default works;
