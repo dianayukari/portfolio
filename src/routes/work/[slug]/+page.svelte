@@ -4,7 +4,6 @@
 	import CaseStudyLayout from '$lib/layouts/CaseStudyLayout.svelte';
 	import GalleryLayout from '$lib/layouts/GalleryLayout.svelte';
 	import BlogLayout from '$lib/layouts/BlogLayout.svelte';
-	import { base } from '$app/paths';
 	import { site } from '$lib/content/site.js';
 
 	let { data } = $props();
@@ -23,15 +22,3 @@
 </svelte:head>
 
 <Layout work={data.work} />
-
-<nav class="work-nav frame">
-	<a href="{base}/#works" class="link-underline">← Index</a>
-</nav>
-
-<style>
-	.work-nav {
-		margin-top: var(--space-5);
-		font-size: var(--text-sm);
-		color: var(--color-muted);
-	}
-</style>

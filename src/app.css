@@ -6,19 +6,14 @@
    3. Point --font-sans at the new family
    Nothing else in the app references a specific font name directly.
    ========================================================================= */
+	 
+/* Graviola — display face used for titles (single Regular weight). */
 @font-face {
-	font-family: 'InterVariable';
+	font-family: 'Graviola';
 	font-style: normal;
-	font-weight: 100 900;
+	font-weight: 400;
 	font-display: swap;
-	src: url('/fonts/InterVariable.woff2') format('woff2');
-}
-@font-face {
-	font-family: 'InterVariable';
-	font-style: italic;
-	font-weight: 100 900;
-	font-display: swap;
-	src: url('/fonts/InterVariable-Italic.woff2') format('woff2');
+	src: url('/fonts/Graviola-Regular.otf') format('opentype');
 }
 
 /* =========================================================================
@@ -27,30 +22,34 @@
    ========================================================================= */
 :root {
 	/* Type */
-	--font-sans: 'InterVariable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	--font-sans: 'Alegreya', Georgia, 'Times New Roman', serif;
 	--font-mono: ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
+	--font-title: 'Alegreya', Georgia, 'Times New Roman', serif;
 
 	/* Color — near-black on off-white, single subdued accent */
-	--color-bg: #f7f6f3;
-	--color-fg: #16150f;
+	--color-bg: #F2F2F2;
+	--color-fg: #013C37;
 	--color-muted: #6b675c;
-	--color-line: #dedbd2;
-	--color-accent: #16150f;
+	--color-line: #D7DEDE;
+	--color-accent: #A65B4E;
 	--color-bg-elevated: #ffffff;
+	--color-highlight: #E9BCB4; /* subtle marker highlight behind subheadings */
+	--color-black: #242424;
+	--grain-opacity: 0.35; /* background noise intensity — 0 disables it */
 
 	/* Type scale — deliberately compressed. Hierarchy comes from weight and
 	   color, not size (benji.org style: no big display type). */
-	--text-xs: 0.8125rem; /* 13px — eyebrows, fine print */
-	--text-sm: 0.9375rem; /* 15px — meta, captions, nav */
-	--text-base: 1.0625rem; /* 17px — body, and nearly everything */
-	--text-lg: 1.0625rem; /* same as body — kept for semantics, no jump */
+	--text-xs: 0.88rem; /* 13px — eyebrows, fine print */
+	--text-sm: 0.95rem; /* 15px — meta, captions, nav */
+	--text-base: 1rem; /* 17px — body, and nearly everything */
+	--text-lg: 1rem; /* same as body — kept for semantics, no jump */
 	--text-xl: 1.125rem; /* 18px — headings within a work */
-	--text-2xl: 1.1875rem; /* 19px — the largest text on the site (titles) */
-	--text-3xl: 1.1875rem; /* name — no bigger than a title */
+	--text-2xl: 1.2rem; /* 19px — the largest text on the site (titles) */
+	--text-3xl: 1.2rem; /* name — no bigger than a title */
 
 	--leading-tight: 1.2;
 	--leading-snug: 1.35;
-	--leading-normal: 1.6;
+	--leading-normal: 1.53;
 	--tracking-tight: -0.005em;
 	--tracking-wide: 0.06em;
 
@@ -59,7 +58,7 @@
 	--space-2: 1rem;
 	--space-3: 1.5rem;
 	--space-4: 2.5rem;
-	--space-5: 4rem;
+	--space-5: 3rem;
 	--space-6: 5.5rem;
 	--space-7: 8rem;
 
@@ -93,11 +92,23 @@ html {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 	scroll-behavior: smooth;
+	background: var(--color-bg);
+}
+/* Subtle background grain — a fixed SVG noise layer behind all content
+   (images/text paint over it). Tune intensity with --grain-opacity. */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	opacity: var(--grain-opacity);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 body {
 	min-height: 100vh;
-	background: var(--color-bg);
-	color: var(--color-fg);
+	background: transparent;
+	color: var(--color-black);
 	font-family: var(--font-sans);
 	font-size: var(--text-base);
 	line-height: var(--leading-normal);
@@ -129,6 +140,13 @@ h4 {
 	font-weight: 500;
 	line-height: var(--leading-tight);
 	letter-spacing: var(--tracking-tight);
+	color: var(--color-fg);
+}
+/* Titles (page titles + the homepage name are all <h1>) use Asap Bold.
+   The per-layout title classes set the 700 weight. */
+h1 {
+	font-family: var(--font-title);
+	font-weight: 500;
 }
 ::selection {
 	background: var(--color-fg);

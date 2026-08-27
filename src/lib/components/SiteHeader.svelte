@@ -3,12 +3,15 @@
 	import { page } from '$app/state';
 	import { site } from '$lib/content/site.js';
 
-	// Home shows no header (the homepage has its own big intro); inner pages
-	// get a slim persistent header with the name + a link back to the index.
-	const isHome = $derived(page.url.pathname === base + '/' || page.url.pathname === base);
+	// No global header on the homepage (it has its own intro) or on work pages
+	// (their rail carries the back-to-index link). Other pages get the slim bar.
+	const path = $derived(page.url.pathname);
+	const hidden = $derived(
+		path === base + '/' || path === base || path.startsWith(base + '/work')
+	);
 </script>
 
-{#if !isHome}
+{#if !hidden}
 	<header class="site-header frame">
 		<a href="{base}/" class="name link-underline">{site.name}</a>
 		<a href="{base}/#works" class="index link-underline">Index</a>
@@ -27,6 +30,7 @@
 	.name {
 		font-weight: 500;
 		letter-spacing: var(--tracking-tight);
+		color: var(--color-fg);
 	}
 	.index {
 		color: var(--color-muted);

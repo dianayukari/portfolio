@@ -18,7 +18,7 @@
 		gap: var(--space-2) var(--space-4);
 		align-items: baseline;
 		justify-content: space-between;
-		margin-top: var(--space-7);
+		margin-top: var(--space-5);
 		padding-top: var(--space-3);
 		padding-bottom: var(--space-4);
 		border-top: 1px solid var(--color-line);

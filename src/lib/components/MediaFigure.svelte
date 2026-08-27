@@ -31,10 +31,10 @@
 		></video>
 	{:else if onzoom}
 		<button type="button" class="zoom" onclick={() => onzoom({ url, caption, alt })}>
-			<img src={url} alt={alt || caption} loading="lazy" />
+			<img src={url} {alt} loading="lazy" />
 		</button>
 	{:else}
-		<img src={url} alt={alt || caption} loading="lazy" />
+		<img src={url} {alt} loading="lazy" />
 	{/if}
 	{#if caption}
 		<figcaption>{caption}</figcaption>
@@ -49,7 +49,6 @@
 	.figure video {
 		width: 100%;
 		border-radius: var(--radius);
-		background: var(--color-line);
 	}
 	.zoom {
 		display: block;

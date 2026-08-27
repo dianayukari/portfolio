@@ -7,11 +7,18 @@ export default {
 	slug: 'ts-data-analysis',
 	title: 'TS Data Analysis', // TODO
 	year: '2025', // TODO
+	publication: 'Folha de S.Paulo', // TODO — where it was published
 	role: 'Data Analysis, Writing', // TODO
 	type: 'blog',
 	date: 'March 2025', // shown as the article date
 	summary: 'A written analysis mixing data, charts and commentary.', // TODO
 	cover: '/works/ts-data-analysis/cover.jpg', // TODO
+
+	// Optional link area shown in the header. Add, edit, or remove freely.
+	links: [
+		{ label: 'Notebook', href: '#' }, // TODO
+		{ label: 'Data source', href: '#' } // TODO
+	],
 
 	blocks: [
 		{
