@@ -84,7 +84,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35em;
-		max-width: 12rem;
+		max-width: 14rem;
 		line-height: 1.3;
 	}
 	.dot {

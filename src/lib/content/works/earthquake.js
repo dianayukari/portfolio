@@ -41,7 +41,7 @@ export default {
 		{ type: 'heading', value: 'Background and context' },
 		{ type: 'text', value: `Seismic hazard is published as peak ground acceleration (PGA), expressed as a fraction of Earth's gravity. The Global Earthquake Model's world hazard map gives, for every point on the globe, the PGA with a 10% chance of being exceeded in the next 50 years. Tehran falls in the 0.19–0.55 g band. GEM assembles this from national and regional hazard models built on historical seismicity.` }, 
 		{ type: 'text', value: `The second layer is population density from CIESIN at Columbia University, a raster in which each pixel carries people per km², built up from national censuses.` },
-		{ type: 'image', src: '/works/earthquake/02.png', caption: 'How the map was made', width: '80%',
+		{ type: 'image', src: '/works/earthquake/02.png', caption: 'How the map was made', width: '100%',
 			annotations: [
 				{ x: 65, y: 20, text: `From the global earthquake model, only areas with a 10% chance of shaking at 0.1 g or greater over the next 50 years were selected. (0.1 g is 10% of Earth's gravitational force.)`, dot: false, background: false, bold: false},
 				{ x: 65, y: 55, text: `Those areas were overlaid onto a second map: population density, in inhabitants per km²`, dot: false, background: false, bold: false},
