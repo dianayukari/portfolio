@@ -39,7 +39,7 @@ export default {
 				{ type: 'image', src: '/works/thesis/installation-light.png'}
 			]
 		},
-		{ type: 'heading', value: 'Thesis: the research' }, // TODO
+		{ type: 'heading', value: 'Thesis: the research' }, 
 		{
 			type: 'text',
 			value: `The thesis pairs 192 semantically matched passages from the Portuguese edition of the IPCC AR6 Synthesis Report against four Brazilian federal climate documents, written across three administrations. Matching is computational: passages aligned by embedding similarity, uncertainty markers extracted and sorted into five outcomes: the claim survives, its confidence shifts, its type of uncertainty shifts, it disappears, or it appears with no source in the science at all.`
@@ -63,7 +63,6 @@ export default {
 			type: 'text',
 			value: 'The thesis result depends on scale: 192 pairs are what demonstrate the pattern is consistent rather than anecdotal. I felt that form of evidence did not transfer to an exhibition, so the installation does not present the corpus. It applies the transformation once, to a sentence the visitor wrote themself.' 
 		},
-		{ type: 'image', src: '/works/thesis/04.jpg', span: 'full' },
 		{ type: 'heading', value: 'Installation' },
 		{
 			type: 'text',

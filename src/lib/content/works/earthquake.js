@@ -86,7 +86,6 @@ export default {
 		{ type: 'heading', value: 'Findings and implications' }, 
 		{ type: 'text', value: `The exposed population traces the plate boundaries almost exactly. The map's contribution is showing how much of that boundary is densely settled. Haiti sits in the highest band, and the 2010 earthquake there remains the deadliest in a century, with 316,000 dead.` },
 		{ type: 'text', value: `Hazard is not risk. Every seismologist I spoke to raised this independently, so the distinction is built into the structure of the piece. Two places with identical PGA can have completely different outcomes depending on soil, building stock, and public preparedness. Taiwan is the clearest case: a magnitude 7.6 earthquake in 1999 killed nearly 2,400 people and triggered a rebuild of the country's construction rules; the 2024 earthquake that prompted this piece killed 18.` },
-		{ type: 'image', src: '/works/earthquake/04.jpg', span: 'full' },
 		{ type: 'heading', value: 'Note' },
 		{ type: 'text', value: `The version published in April 2024 gave the figure as 1.73 billion. That calculation summed GPW density values directly, which treats every cell as exactly 1 km². At 30 arc-seconds, cells are smaller than that and narrow further with latitude. Recomputing with true cell area gives 1.41 billion. The pipeline now validates by summing the unmasked raster and checking the result against GPW's published global total.` },
 	]
