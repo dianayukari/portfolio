@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>{site.name} — {site.role}</title>
+	<title>{site.name}</title>
 	<meta name="description" content={introText} />
 </svelte:head>
 
