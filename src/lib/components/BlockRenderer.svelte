@@ -4,6 +4,7 @@
 	import MediaFigure from './MediaFigure.svelte';
 	import Figure from './Figure.svelte';
 	import Legend from './Legend.svelte';
+	import Chart from './Chart.svelte';
 	import { base } from '$app/paths';
 	import { slugify } from '$lib/utils/slug.js';
 
@@ -57,6 +58,10 @@
 			>
 				<img src={resolve(block.src)} alt={block.alt ?? ''} loading="lazy" />
 			</Figure>
+		</div>
+	{:else if block.type === 'chart'}
+		<div class="b-media {mediaClass(block)}" style={mediaStyle(block)}>
+			<Chart {...block} />
 		</div>
 	{:else if block.type === 'legend'}
 		<div class="b-media b-media--default b-legend">

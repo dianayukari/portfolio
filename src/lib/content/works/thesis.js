@@ -1,9 +1,11 @@
 // -----------------------------------------------------------------------------
 // WORK · CASE STUDY
 // A case study renders `blocks[]` in order through CaseStudyLayout.
-// Block types: 'text' | 'heading' | 'quote' | 'image' | 'video' | 'columns'
+// Block types: 'text' | 'heading' | 'quote' | 'image' | 'video' | 'columns' | 'chart'
 //   image/video: { type, src, caption?, alt?, span?: 'default'|'wide'|'full', poster? }
 //   columns:     { type:'columns', items:[ <image/video block>, ... ] }
+//   chart:       { type:'chart', name, caption?, span?, aspect?, height?, props? }
+//                name is a key in src/lib/charts/index.js (interactive D3).
 // Media paths point into /static/works/<slug>/ — drop your files there.
 // -----------------------------------------------------------------------------
 export default {

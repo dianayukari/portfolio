@@ -3,6 +3,7 @@
 // To add/remove a work: create/delete its file and update this list.
 // The dynamic route (work/[slug]) generates a page for every entry at build.
 // -----------------------------------------------------------------------------
+import beyondBorders from './beyond-borders-2026.js';
 import thesis from './thesis.js';
 import earthquake from './earthquake.js';
 import folhaPrinted from './folha-printed.js';
@@ -12,6 +13,7 @@ import TsIpcc from './ts-ipcc.js';
 export const works = [
 	thesis,
 	earthquake,
+	beyondBorders,
 	folhaPrinted,
 	folhaInteractive,
 	TsIpcc

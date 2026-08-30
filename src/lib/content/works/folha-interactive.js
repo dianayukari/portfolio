@@ -4,16 +4,16 @@
 // -----------------------------------------------------------------------------
 export default {
 	slug: 'folha-interactive',
-	title: 'Folha — Interactive Tools', // TODO
-	year: '2020 - 2024', // TODO
+	title: 'Folha — Interactive Tools',
+	year: '2020 - 2024',
 	publication: 'Folha de S.Paulo',
-	role: 'UI Design, Development', // TODO
+	role: 'UI Design, Development', 
 	type: 'gallery',
-	summary: 'Small interactive tools that let readers query a dataset', // TODO
-	cover: '/works/folha-interactive/cover.png', // TODO
+	summary: 'Small interactive tools that let readers query a dataset',
+	cover: '/works/folha-interactive/cover.png', 
 
 	links: [
-		{ label: 'Open live', href: '#' } // TODO
+		{ label: 'Open live', href: 'https://www1.folha.uol.com.br/autores/diana-yukari.shtm' }
 	],
 
 	media: [

@@ -7,13 +7,13 @@
 // -----------------------------------------------------------------------------
 export default {
 	slug: 'folha-printed',
-	title: 'Folha — Printed', // TODO
-	year: '2019-2024', // TODO
+	title: 'Folha — Printed', 
+	year: '2019-2024', 
 	publication: 'Folha de S.Paulo',
-	role: 'Editorial Design', // TODO
+	role: 'Data Visualization', 
 	type: 'gallery',
-	summary: 'Selected printed pieces for the newspaper Folha de S.Paulo.', // TODO
-	cover: '/works/folha-printed/cover.jpg', // TODO
+	summary: 'Selected printed pieces for the newspaper Folha de S.Paulo.', 
+	cover: '/works/folha-printed/cover.jpg',
 
 	links: [
 		{ label: 'See online', href: 'https://www1.folha.uol.com.br/autores/diana-yukari.shtml' }

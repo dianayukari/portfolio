@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.work.title} — {site.name}</title>
+	<title>{site.name} — {data.work.title}</title>
 	<meta name="description" content={data.work.summary} />
 </svelte:head>
 
