@@ -12,10 +12,10 @@ import TsIpcc from './ts-ipcc.js';
 
 export const works = [
 	thesis,
-	earthquake,
 	beyondBorders,
-	folhaPrinted,
+	earthquake,
 	folhaInteractive,
+	folhaPrinted,
 	TsIpcc
 ];
 
