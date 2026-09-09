@@ -22,30 +22,30 @@
    ========================================================================= */
 :root {
 	/* Type */
-	--font-sans: 'Alegreya', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Piazzolla', Georgia, 'Times New Roman', serif;
 	--font-mono: ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
-	--font-title: 'Alegreya', Georgia, 'Times New Roman', serif;
+	--font-title: 'Piazzolla', Georgia, 'Times New Roman', serif;
 
-	/* Color — near-black on off-white, single subdued accent */
-	--color-bg: #F2F2F2;
-	--color-fg: #013C37;
+	/* Color — near-black on near-white, single subdued accent */
+	--color-bg: #fefefe;
+	--color-fg: #242424; /* the strong colour: headings, links, markers */
 	--color-muted: #6b675c;
 	--color-line: #D7DEDE;
 	--color-accent: #A65B4E;
 	--color-bg-elevated: #ffffff;
 	--color-highlight: #E9BCB4; /* subtle marker highlight behind subheadings */
 	--color-black: #242424;
-	--grain-opacity: 0.35; /* background noise intensity — 0 disables it */
+	--grain-opacity: 0.1; /* background noise intensity — 0 disables it */
 
 	/* Type scale — deliberately compressed. Hierarchy comes from weight and
 	   color, not size (benji.org style: no big display type). */
-	--text-xs: 0.88rem; /* 13px — eyebrows, fine print */
-	--text-sm: 0.95rem; /* 15px — meta, captions, nav */
-	--text-base: 1rem; /* 17px — body, and nearly everything */
-	--text-lg: 1rem; /* same as body — kept for semantics, no jump */
-	--text-xl: 1.125rem; /* 18px — headings within a work */
-	--text-2xl: 1.2rem; /* 19px — the largest text on the site (titles) */
-	--text-3xl: 1.2rem; /* name — no bigger than a title */
+	--text-xs: 0.825rem; /* 13px — eyebrows, fine print */
+	--text-sm: 0.89rem; /* 14px — meta, captions, nav */
+	--text-base: 0.9375rem; /* 15px — body, and nearly everything */
+	--text-lg: 0.9375rem; /* same as body — kept for semantics, no jump */
+	--text-xl: 1.05rem; /* 17px — headings within a work */
+	--text-2xl: 1.125rem; /* 18px — the largest text on the site (titles) */
+	--text-3xl: 1.125rem; /* name — no bigger than a title */
 
 	--leading-tight: 1.2;
 	--leading-snug: 1.35;

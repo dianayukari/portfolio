@@ -19,11 +19,11 @@ function palette(el) {
 	const s = getComputedStyle(el);
 	const token = (name, fallback) => s.getPropertyValue(name).trim() || fallback;
 	return {
-		fg: token('--color-fg', '#013C37'),
+		fg: token('--color-fg', '#242424'),
 		muted: token('--color-muted', '#6b675c'),
 		line: token('--color-line', '#D7DEDE'),
 		accent: token('--color-accent', '#A65B4E'),
-		bg: token('--color-bg', '#F2F2F2')
+		bg: token('--color-bg', '#FAFAFA')
 	};
 }
 
