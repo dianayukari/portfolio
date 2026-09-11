@@ -19,11 +19,11 @@ export const site = {
 		// `You can reach me at <a href="mailto:yukaridiana@gmail.com" target="_blank" rel="noopener">yukaridiana@gmail.com</a>, or find me on <a href="https://www.instagram.com/dianayukari" target="_blank" rel="noopener">Instagram</a> and <a href="https://www.linkedin.com/in/dianayukari/" target="_blank" rel="noopener">LinkedIn</a>.`
 	],
 	// Contact / external links (shown on homepage + footer).
-	// links: [
-	// 	{ label: 'yukaridiana@gmail.com', href: 'mailto:yukaridiana@gmail.com' },
-	// 	{ label: 'Instagram', href: '#' }, // TODO
-	// 	{ label: 'LinkedIn', href: '#' } // TODO
-	// ],
+	links: [
+		{ label: 'yukaridiana@gmail.com', href: 'mailto:yukaridiana@gmail.com' },
+		{ label: 'Instagram', href: 'https://www.instagram.com/dianayukari' }, 
+		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/dianayukari/' } 
+	],
 	// Footer note.
 	footer: '© ' + '2026' + ' Diana Yukari'
 };
