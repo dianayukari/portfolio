@@ -58,7 +58,9 @@ export function goToScreen(index) {
 // QUIET ms — the tail of one fling can never turn into a second step. A mouse
 // wheel's notches arrive further apart than QUIET, so it still steps on.
 // Anything inside a screen that scrolls on its own (about on a phone, the
-// project sheet) keeps the gesture until it hits its end.
+// project sheet) keeps the gesture until it hits its end. A sideways swipe
+// pages the active project's gallery, like the ‹ › chevrons — except on the
+// open project sheet, which covers the media.
 // -----------------------------------------------------------------------------
 
 const LOCK = 700;
@@ -110,7 +112,7 @@ export function onDeckWheel(event) {
 	}
 }
 
-/** @type {{ x: number, y: number, box: Element | null, top: number } | null} */
+/** @type {{ x: number, y: number, box: Element | null, top: number, sheet: boolean } | null} */
 let touch = null;
 
 /** @param {TouchEvent} event */
@@ -118,7 +120,8 @@ export function onDeckTouchStart(event) {
 	if (event.touches.length !== 1) return (touch = null);
 	const t = event.touches[0];
 	const box = scroller(event.target);
-	touch = { x: t.clientX, y: t.clientY, box, top: box?.scrollTop ?? 0 };
+	const sheet = event.target instanceof Element && !!event.target.closest('.sheet');
+	touch = { x: t.clientX, y: t.clientY, box, top: box?.scrollTop ?? 0, sheet };
 }
 
 /** @param {TouchEvent} event */
@@ -127,9 +130,13 @@ export function onDeckTouchEnd(event) {
 	const t = event.changedTouches[0];
 	const dx = touch.x - t.clientX;
 	const dy = touch.y - t.clientY;
-	const { box, top } = touch;
+	const { box, top, sheet } = touch;
 	touch = null;
-	if (Math.abs(dy) < SWIPE_THRESHOLD || Math.abs(dy) < Math.abs(dx)) return;
+	if (Math.abs(dx) > Math.abs(dy)) {
+		if (Math.abs(dx) >= SWIPE_THRESHOLD && !sheet) galleryStep(Math.sign(dx));
+		return;
+	}
+	if (Math.abs(dy) < SWIPE_THRESHOLD) return;
 	// The gesture scrolled something inside the screen — it was for that.
 	if (box && (box.scrollTop !== top || hasRoom(box, Math.sign(dy)))) return;
 	goToScreen(deck.index + Math.sign(dy));

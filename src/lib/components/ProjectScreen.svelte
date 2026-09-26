@@ -254,12 +254,23 @@
 		   short of the toggle. */
 		.card {
 			position: absolute;
-			top: calc(var(--header-h) + 16px);
+			top: var(--header-h);
 			right: 10px;
 			bottom: 69px;
 			left: 10px;
 			border-radius: 12px;
 			overflow: hidden;
+			/* A long press on the media is almost always a thumb resting while
+			   swiping, so iOS's link/image menu and the dim highlight that
+			   precedes it are switched off. A tap still opens the live link. */
+			-webkit-touch-callout: none;
+			-webkit-tap-highlight-color: transparent;
+			-webkit-user-select: none;
+			user-select: none;
+		}
+		.card :global(img),
+		.card :global(video) {
+			pointer-events: none;
 		}
 		.card a {
 			display: block;
