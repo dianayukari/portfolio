@@ -142,7 +142,7 @@
 			   without handing the scroll back to the deck mid-list. */
 			overflow-y: auto;
 			overscroll-behavior: contain;
-			padding: calc(var(--header-h) + 82px) var(--page-pad) var(--page-pad);
+			padding: calc(var(--header-h) + 20px) var(--page-pad) var(--page-pad);
 		}
 		.heading,
 		.note {

@@ -19,7 +19,7 @@
 	const slide = $derived(deck.gallery[index] ?? 0);
 	const media = $derived(project.media ?? []);
 	const paging = $derived(media.length > 1);
-	const eyebrow = $derived((project.disciplines ?? []).join(' · '));
+	const eyebrow = $derived((project.role ?? []).join(' | '));
 
 	// One shape for every field, so the column renders in a single loop and a
 	// field with nothing in it is skipped, label and all.

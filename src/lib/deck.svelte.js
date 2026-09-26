@@ -112,7 +112,7 @@ export function onDeckWheel(event) {
 	}
 }
 
-/** @type {{ x: number, y: number, box: Element | null, top: number, sheet: boolean } | null} */
+/** @type {{ x: number, y: number, up: boolean, down: boolean, sheet: boolean } | null} */
 let touch = null;
 
 /** @param {TouchEvent} event */
@@ -121,7 +121,10 @@ export function onDeckTouchStart(event) {
 	const t = event.touches[0];
 	const box = scroller(event.target);
 	const sheet = event.target instanceof Element && !!event.target.closest('.sheet');
-	touch = { x: t.clientX, y: t.clientY, box, top: box?.scrollTop ?? 0, sheet };
+	// Whether the box could scroll each way is judged as the finger lands, not
+	// as it lifts: iOS rubber-bands past the edge mid-gesture, which moves
+	// scrollTop even when the box was already at its end.
+	touch = { x: t.clientX, y: t.clientY, up: hasRoom(box, -1), down: hasRoom(box, 1), sheet };
 }
 
 /** @param {TouchEvent} event */
@@ -130,14 +133,14 @@ export function onDeckTouchEnd(event) {
 	const t = event.changedTouches[0];
 	const dx = touch.x - t.clientX;
 	const dy = touch.y - t.clientY;
-	const { box, top, sheet } = touch;
+	const { up, down, sheet } = touch;
 	touch = null;
 	if (Math.abs(dx) > Math.abs(dy)) {
 		if (Math.abs(dx) >= SWIPE_THRESHOLD && !sheet) galleryStep(Math.sign(dx));
 		return;
 	}
 	if (Math.abs(dy) < SWIPE_THRESHOLD) return;
-	// The gesture scrolled something inside the screen — it was for that.
-	if (box && (box.scrollTop !== top || hasRoom(box, Math.sign(dy)))) return;
+	// Something inside the screen had room to scroll this way — it was for that.
+	if (dy > 0 ? down : up) return;
 	goToScreen(deck.index + Math.sign(dy));
 }
