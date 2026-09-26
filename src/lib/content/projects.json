@@ -1,0 +1,192 @@
+[
+	{
+		"slug": "beyond-borders",
+		"title": "Building a visual system from the report's own data",
+		"subtitle": "EBANX, 2026",
+		"disciplines": ["Design", "Data", "Front-end development"],
+		"description": "A generative visual identity for EBANX's annual report, built in p5 as a 3D Perlin noise orbit where each circle is a country sized by the share of adults making or receiving digital payments.",
+		"role": ["Design", "Creative coding"],
+		"solution": "Gave a report about global payments an identity that was made from its own dataset, so the visual system and the findings stayed in sync. EBANX's in-house team then used the orbit for the launch assets.",
+		"focus": ["Generative system with rules", "Handoff to a team that kept using it"],
+		"liveUrl": "https://www.ebanx.com/en/beyond-borders-2026/",
+		"media": [
+			{
+				"type": "video",
+				"src": "/works/beyond-borders-2026/bb-blob.mp4",
+				"frame": "phone",
+				"alt": ""
+			},
+			{
+				"type": "image",
+				"src": "/works/beyond-borders-2026/home.jpg",
+				"frame": "window",
+				"alt": ""
+			},
+			{
+				"type": "image",
+				"src": "/works/beyond-borders-2026/desktop.jpg",
+				"alt": "",
+				"frame": "window"
+			},
+			{
+				"type": "video",
+				"src": "/works/beyond-borders-2026/bb-linkedin.mp4",
+				"frame": "phone",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"slug": "social-museum",
+		"title": "Letting visitors see their own pose matched to strangers' museum photos",
+		"subtitle": "The Social Museum | DAE, 2025",
+		"disciplines": ["Design", "Data", "Front-end development"],
+		"description": "An installation and website about how people pose with artwork in 2,251 Instagram photos taken inside modern and contemporary art museums.",
+		"role": ["Design", "Data", "Front-end development"],
+		"solution": "Designed one experience across two touchpoints, a camera installation and a take-home website, so visitors grasped the research by standing in front of it. Their portrait lands on the site with everyone else captured that day. In collaboration with Kosara Keskinova.",
+		"focus": [
+			"Installation-to-website journey",
+			"Filtering a large image set",
+			"Research protocol open to visitors"
+		],
+		"liveUrl": "https://dianayukari.github.io/museum/",
+		"media": [
+			{
+				"type": "video",
+				"src": "/works/museum/museum-mob.mp4",
+				"frame": "phone",
+				"alt": ""
+			},
+			{
+				"type": "video",
+				"src": "/works/museum/museum.mp4",
+				"frame": "phone",
+				"alt": ""
+			},
+			{
+				"type": "image",
+				"src": "/works/museum/museum-photos.jpg",
+				"frame": "phone",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"slug": "colors",
+		"title": "Helping newsroom designers hit the brand palette without deciding color every time",
+		"subtitle": "Folha de S.Paulo, 2022",
+		"disciplines": ["Design"],
+		"description": "Folha's palette was small enough that charts kept reaching outside it. I expanded it in keeping with the paper's visual identity, then defined which combinations to use and what each one means. The new palette replaced the old one across the newsroom.",
+		"role": ["Design System", "Research"],
+		"solution": "The old palette forced designers to invent color combinations on the spot, so charts drifted from their meaning. The expanded set gave each combination a job, and every pair was checked for accessibility.",
+		"focus": [
+			"Expanding a palette within an existing identity",
+			"Semantics: categorical, sequential, diverging",
+			"Accessible contrast and colour-blind safety",
+			"Adoption across a newsroom"
+		],
+		"liveUrl": "",
+		"media": [
+			{
+				"type": "video",
+				"src": "/works/colors/color-system-v3.mp4",
+				"frame": "window",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"slug": "taylor-swift",
+		"title": "Rebuild a three-hour show and see what changed",
+		"subtitle": "Folha de S.Paulo, 2023",
+		"disciplines": ["Design", "Data", "Front-end development"],
+		"description": "Fans swap songs into Taylor Swift's Eras Tour setlist and compare how their version's positivity, danceability and energy curve against the original.",
+		"role": ["Design", "Front-end development"],
+		"solution": "Turned a data analysis into something fans could play with. The original setlist stays on screen as a baseline while the edited curve updates, and each bar plays its track.",
+		"focus": [
+			"Multi-metric encoding",
+			"Editing as the core interaction",
+			"Built and shipped in a newsroom"
+		],
+		"liveUrl": "https://www1.folha.uol.com.br/ilustrada/2023/11/show-da-taylor-swift-e-dancante-ou-parado-simule-como-seria-seu-setlist.shtml",
+		"media": [
+			{
+				"type": "video",
+				"src": "/works/eras/taylor.mp4",
+				"frame": "phone",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"slug": "elections",
+		"title": "Run Brazil's election across 27 states",
+		"subtitle": "Folha de S.Paulo, 2022",
+		"disciplines": ["Design", "Data", "Front-end development"],
+		"description": "Two interactive tools that let readers redistribute votes state by state and see the national result change. The second-round version asked where eliminated candidates' voters would go.",
+		"role": ["Design", "Front-end development"],
+		"solution": "Turned state-by-state election results into a tool readers could use on their phones. The same interaction carried into the second round, so the newsroom shipped a second tool on deadline without readers relearning anything.",
+		"focus": [
+			"Constrained input design",
+			"One pattern reused across two tools",
+			"Shipping on a news/election deadline"
+		],
+		"liveUrl": "https://www1.folha.uol.com.br/poder/2022/10/distribua-votos-de-ciro-e-tebet-e-veja-quem-seria-eleito-presidente.shtml",
+		"media": [
+			{
+				"type": "video",
+				"src": "/works/elections/elections.mp4",
+				"frame": "phone",
+				"alt": ""
+			},
+			{
+				"type": "video",
+				"src": "/works/elections/elections2.mp4",
+				"frame": "phone",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"slug": "other",
+		"title": "Print work",
+		"subtitle": "Folha de S.Paulo, 2019-2024",
+		"disciplines": ["Design", "Data"],
+		"description": "Graphics for Folha's print edition, from daily charts to full-page features, made across five years at Brazil's largest newspaper. In collaboration with journalist of different desks across the newsroom.",
+		"role": ["Design", "Data"],
+		"solution": "Newspaper stories often turn on data that won't reduce to a single number: several variables moving at once, patterns that only show at full resolution, exceptions that matter as much as the trend. The print graphics kept that density on the page and organised it through hierarchy, annotation and layout, so a reader could take in the headline finding at a glance and then stay to read the detail underneath.",
+		"focus": [
+			"Editorial judgment under deadline",
+			"Fixed formats and column widths",
+			"Hierarchy without interaction"
+		],
+		"liveUrl": "",
+		"media": [
+			{
+				"type": "image",
+				"src": "/works/others/01.jpg",
+				"alt": ""
+			},
+			{
+				"type": "image",
+				"src": "/works/others/04spread.png",
+				"alt": ""
+			},
+			{
+				"type": "image",
+				"src": "/works/others/05.jpg",
+				"alt": ""
+			},
+			{
+				"type": "image",
+				"src": "/works/others/07.jpg",
+				"alt": ""
+			},
+			{
+				"type": "image",
+				"src": "/works/others/11spread.jpg",
+				"alt": ""
+			}
+		]
+	}
+]

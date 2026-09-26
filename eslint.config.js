@@ -23,8 +23,11 @@ export default defineConfig([
 	},
 
 	{
-		// Override or add rule settings here, such as:
-		// 'svelte/button-has-type': 'error'
-		rules: {}
+		rules: {
+			// Every <a href> on this site points somewhere external — the live
+			// project, the resume. Moving between screens is scrolling, not
+			// navigation, so there is no internal link for resolve() to resolve.
+			'svelte/no-navigation-without-resolve': ['error', { ignoreLinks: true }]
+		}
 	}
 ]);

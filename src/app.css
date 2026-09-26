@@ -1,79 +1,76 @@
 /* =========================================================================
-   FONTS  —  self-hosted, swappable
-   To change the typeface later:
-   1. Drop the new .woff2 files into /static/fonts/
-   2. Update the @font-face src below (and the family name)
-   3. Point --font-sans at the new family
-   Nothing else in the app references a specific font name directly.
+   FONTS  —  Asap, loaded from Google Fonts in app.html.
+   To change the typeface: swap the <link> there, then point --font-sans at
+   the new family. Nothing else in the app names a font.
    ========================================================================= */
-	 
-/* Graviola — display face used for titles (single Regular weight). */
-@font-face {
-	font-family: 'Graviola';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url('/fonts/Graviola-Regular.otf') format('opentype');
-}
 
 /* =========================================================================
    DESIGN TOKENS  —  the whole visual style lives here.
-   Restyle the site without touching any content or component.
+   The site is two colours and one typeface; hierarchy comes from weight and
+   size only. The mobile block at the end overrides the handful of values
+   that differ — mobile is its own composition, but these are shared.
    ========================================================================= */
 :root {
-	/* Type */
-	--font-sans: 'Piazzolla', Georgia, 'Times New Roman', serif;
-	--font-mono: ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
-	--font-title: 'Piazzolla', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Asap', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-	/* Color — near-black on near-white, single subdued accent */
-	--color-bg: #fefefe;
-	--color-fg: #242424; /* the strong colour: headings, links, markers */
-	--color-muted: #6b675c;
-	--color-line: #D7DEDE;
-	--color-accent: #A65B4E;
-	--color-bg-elevated: #ffffff;
-	--color-highlight: #E9BCB4; /* subtle marker highlight behind subheadings */
-	--color-black: #242424;
-	--grain-opacity: 0.1; /* background noise intensity — 0 disables it */
+	/* Colour — pink ground, purple everything else. There is no third colour. */
+	--color-bg: #ffc8d5;
+	--color-fg: #4a4356;
 
-	/* Type scale — deliberately compressed. Hierarchy comes from weight and
-	   color, not size (benji.org style: no big display type). */
-	--text-xs: 0.825rem; /* 13px — eyebrows, fine print */
-	--text-sm: 0.89rem; /* 14px — meta, captions, nav */
-	--text-base: 0.9375rem; /* 15px — body, and nearly everything */
-	--text-lg: 0.9375rem; /* same as body — kept for semantics, no jump */
-	--text-xl: 1.05rem; /* 17px — headings within a work */
-	--text-2xl: 1.125rem; /* 18px — the largest text on the site (titles) */
-	--text-3xl: 1.125rem; /* name — no bigger than a title */
+	/* Type — three sizes, that is all there is.
+	   display   name · home statement · (01) · project title      [bold]
+	   subtitle  "EBANX, 2026"                                     [light]
+	   body      field labels [bold, uppercase] and everything else [regular] */
+	--text-display: 24px;
+	--text-subtitle: 20px;
+	--text-body: 14px;
 
-	--leading-tight: 1.2;
-	--leading-snug: 1.35;
-	--leading-normal: 1.53;
-	--tracking-tight: -0.005em;
-	--tracking-wide: 0.06em;
+	--leading-display: 1.3;
+	--leading-body: 17.9px;
 
-	/* Spacing scale */
-	--space-1: 0.5rem;
-	--space-2: 1rem;
-	--space-3: 1.5rem;
-	--space-4: 2.5rem;
-	--space-5: 3rem;
-	--space-6: 5.5rem;
-	--space-7: 8rem;
+	--weight-light: 300;
+	--weight-regular: 400;
+	--weight-bold: 700;
 
-	/* Layout — one narrow centered column with wide lateral margins.
-	   Text sits in --col-text; images/galleries may use the slightly wider
-	   --col-media. Both are centered; the margins grow with the viewport. */
-	--page-pad: clamp(1.25rem, 6vw, 2.5rem);
-	--col-text: 40rem; /* the main centered column (text, index, chrome) */
-	--col-media: 52rem; /* wider column for images / galleries */
-	--content-max: var(--col-text); /* default .frame width */
-	--reading-max: var(--col-text); /* text measure inside layouts */
-	--work-max: var(--col-media); /* case-study body (text stays narrower) */
+	/* Layout */
+	--page-pad: 70px;
+	/* How tall the phone frame stands in a project screen's content row.
+	   The only knob for the size of a framed slide — turn it down for a
+	   smaller phone, up for a bigger one. Desktop only. */
+	--phone-height: 100%;
+	--header-h: 83px; /* identity + tracker; the screens pad past it */
+	/* How much of the band below the header a project screen's columns fill.
+	   They are centred in that band, so the leftover splits evenly above and
+	   below. */
+	--screen-fill: 65%;
+	--window-bar: 20px; /* title bar height on the window frame */
 
-	--radius: 2px;
+	/* Tracker squares — the active one is simply bigger, nothing else changes. */
+	--dot: 10px;
+	--dot-active: 16px;
+	--dot-gap: 7px; /* 17px pitch between the 10px squares */
+
+	/* Motion */
 	--transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+	--settle: 900ms cubic-bezier(0.16, 1, 0.3, 1);
+	--settle-stagger: 60ms;
+	/* Switching screens: how far a screen drifts, and how long the crossfade
+	   takes. Leaving and arriving run together, so the page is never empty. */
+	--switch-drift: 12px;
+	--switch-time: 380ms;
+	--switch-ease: cubic-bezier(0.33, 0, 0.2, 1);
+}
+
+@media (max-width: 767px) {
+	:root {
+		--text-display: 20px;
+		--text-subtitle: 14px;
+		--page-pad: 40px;
+		--header-h: 72px;
+		--dot: 8px;
+		--dot-active: 14px;
+		--dot-gap: 10px; /* 18px pitch between the 8px squares */
+	}
 }
 
 /* =========================================================================
@@ -91,36 +88,30 @@ html {
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
-	scroll-behavior: smooth;
 	background: var(--color-bg);
 }
-/* Subtle background grain — a fixed SVG noise layer behind all content
-   (images/text paint over it). Tune intensity with --grain-opacity. */
-body::before {
-	content: '';
-	position: fixed;
-	inset: 0;
-	z-index: -1;
-	pointer-events: none;
-	opacity: var(--grain-opacity);
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+/* The page never scrolls — screens switch in place (see THE DECK). */
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+	overscroll-behavior: none;
 }
 body {
-	min-height: 100vh;
-	background: transparent;
-	color: var(--color-black);
+	background: var(--color-bg);
+	color: var(--color-fg);
 	font-family: var(--font-sans);
-	font-size: var(--text-base);
-	line-height: var(--leading-normal);
-	font-feature-settings: 'cv05' 1, 'ss03' 1; /* Inter tweaks; harmless for other fonts */
+	font-size: var(--text-body);
+	font-weight: var(--weight-regular);
+	line-height: var(--leading-body);
 }
 img,
 picture,
 video,
-canvas {
+canvas,
+svg {
 	display: block;
 	max-width: 100%;
-	height: auto;
 }
 a {
 	color: inherit;
@@ -131,22 +122,16 @@ button {
 	color: inherit;
 	background: none;
 	border: none;
+	padding: 0;
 	cursor: pointer;
 }
 h1,
 h2,
 h3,
-h4 {
-	font-weight: 500;
-	line-height: var(--leading-tight);
-	letter-spacing: var(--tracking-tight);
-	color: var(--color-fg);
-}
-/* Titles (page titles + the homepage name are all <h1>) use Asap Bold.
-   The per-layout title classes set the 700 weight. */
-h1 {
-	font-family: var(--font-title);
-	font-weight: 500;
+p {
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
 }
 ::selection {
 	background: var(--color-fg);
@@ -154,41 +139,87 @@ h1 {
 }
 
 /* =========================================================================
-   SHARED PRIMITIVES
+   THE DECK  —  one screen per viewport, switched rather than scrolled.
+   Every screen sits in the same place. The one on show is data-pos="on"; the
+   rest wait just above or just below it, faded out. A switch is therefore a
+   short drift in the direction you went: the old screen fades out while
+   the new one crossfades in over it at the same time. Media sits in the same
+   place on every project, so it reads as one image changing into the next
+   rather than the page going blank. 100dvh (not vh) so iOS Safari's address
+   bar never clips one.
    ========================================================================= */
-.frame {
-	width: 100%;
-	max-width: var(--content-max);
-	margin-inline: auto;
-	padding-inline: var(--page-pad);
+.deck {
+	position: relative;
+	height: 100dvh;
+	overflow: hidden;
+}
+.screen {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	opacity: 0;
+	visibility: hidden;
+	/* Leaving: hidden once it has faded. */
+	transition:
+		opacity var(--switch-time) var(--switch-ease),
+		translate var(--switch-time) var(--switch-ease),
+		visibility 0s linear var(--switch-time);
+}
+.screen[data-pos='above'] {
+	translate: 0 calc(var(--switch-drift) * -1);
+}
+.screen[data-pos='below'] {
+	translate: 0 var(--switch-drift);
+}
+.screen[data-pos='on'] {
+	z-index: 1;
+	opacity: 1;
+	visibility: visible;
+	translate: 0 0;
+	transition:
+		opacity var(--switch-time) var(--switch-ease),
+		translate var(--switch-time) var(--switch-ease),
+		visibility 0s;
 }
 
-.link-underline {
-	background-image: linear-gradient(currentColor, currentColor);
-	background-position: 0 100%;
-	background-repeat: no-repeat;
-	background-size: 0% 1px;
-	transition: background-size var(--transition);
+/* =========================================================================
+   SHARED TYPE PRIMITIVES
+   ========================================================================= */
+.display {
+	font-size: var(--text-display);
+	font-weight: var(--weight-bold);
+	line-height: var(--leading-display);
 }
-.link-underline:hover {
-	background-size: 100% 1px;
+.subtitle {
+	font-size: var(--text-subtitle);
+	font-weight: var(--weight-light);
+	line-height: normal;
 }
-
-.eyebrow {
-	font-size: var(--text-xs);
-	letter-spacing: var(--tracking-wide);
+/* Field labels: DESCRIPTION, ROLE, SOLUTION, FOCUS, PREVIOUSLY, SKILLS… */
+.label {
+	font-size: var(--text-body);
+	font-weight: var(--weight-bold);
+	line-height: normal;
 	text-transform: uppercase;
-	color: var(--color-muted);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
 	*,
 	*::before,
 	*::after {
 		transition-duration: 0.01ms !important;
 		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
 	}
 }

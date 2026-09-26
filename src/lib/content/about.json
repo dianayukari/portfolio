@@ -1,0 +1,29 @@
+{
+	"heading": "About",
+	"resume": { "label": "", "href": "" },
+	"previously": [
+		{ "what": "Creating data first products", "where": "@Folha de S.Paulo" },
+		{ "what": "Leading a data journalism team", "where": "@Folha de S.Paulo" },
+		{ "what": "Telling stories", "where": "@G1" },
+		{ "what": "Illustrating stories", "where": "@Business Insider" }
+	],
+	"education": [
+		{ "what": "BFA in Visual Communication", "where": "@School of the Art Institute of Chicago" },
+		{ "what": "MA in Information Design", "where": "@Design Academy Eindhoven" }
+	],
+	"skills": [
+		"Visual Direction",
+		"Complex Subject Translation",
+		"AI prototyping",
+		"Creative Coding (p5, D3)",
+		"Cartography & Geospatial"
+	],
+	"thinking": {
+		"label": "I'VE BEEN THINKING ABOUT",
+		"updated": "2026-09-26",
+		"paragraphs": ["Like most people, I've been thinking a lot about AI. I had a conversation with a designer friend who never had the time to learn how to code but had oh so many ideas on paper. He became what I personally consider an AI-native designer, someone who from the beginning was really excited to use it to realize all of the ideas he already had sitting in his mind. He ships more than I ever did, and I'm amazed to see it. This is the use I aspire to, though: it never designs, it never creates the actual output. It is, more than anything, another tool, albeit a powerful one. I'm cautiously excited because I still feel guilty about using it while it drains resources from the planet.", 
+		"I'm also obviously thinking of life after getting my Master's. I haven't had to look for a job since 2017, and it looks so different this time. For a while there I considered not being a designer anymore; I do have data analysis skills and could leverage those. But being a creative really is an identity at this point, after so many years practicing it. So really, I'm pivoting a bit, looking beyond data visualization, which is what I have been a specialist in, and trying to see what's out there that still makes sense in this AI world and that can take an exceptionally anal, systematic and organized designer. Maybe let's work together, you and me.",
+		"Oh, also, this portfolio website was based on the one by Robert Feasly. Credit where credit is due. Also built with Claude."
+		]
+	}
+}
