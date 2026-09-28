@@ -1,8 +1,11 @@
 <script>
 	// The media a project's chevrons page through. Every slide stays mounted so
 	// stepping is instant and the crossfade has something to fade to; videos are
-	// the exception — only the active one is a real <video>, the rest sit as
-	// their poster so five autoplaying files never run at once.
+	// the exception — a video is only a real <video> once it has been shown (the
+	// rest sit as their poster), and only the active one plays, so five files
+	// never run at once. A shown video stays mounted, paused: pulling it out the
+	// moment it stops being active left its bezel empty mid-fade, collapsed to a
+	// thin frame.
 	//
 	// A slide can carry a frame:
 	//   "phone"  — a dark bezel, filled edge to edge
@@ -16,6 +19,38 @@
 
 	/** @param {string} [p] */
 	const resolve = (p) => (!p || /^https?:\/\//.test(p) ? p : base + p);
+
+	// A frame has no size of its own until its media does — before the image
+	// loads, the bezel's padding and background show as a thin empty sliver. So
+	// each holder stays hidden until something inside it has loaded.
+	/** @type {Record<string, boolean>} */
+	let loaded = $state({});
+
+	/** @param {HTMLImageElement | HTMLVideoElement} node @param {string} key */
+	function ready(node, key) {
+		const mark = () => (loaded[key] = true);
+		if (
+			node instanceof HTMLImageElement ? node.complete && node.naturalWidth : node.readyState >= 2
+		)
+			mark();
+		const ev = node instanceof HTMLImageElement ? 'load' : 'loadeddata';
+		node.addEventListener(ev, mark);
+		return { destroy: () => node.removeEventListener(ev, mark) };
+	}
+
+	/** @type {Record<string, boolean>} */
+	let shown = $state({});
+	$effect(() => {
+		const item = media[index];
+		if (item?.type === 'video') shown[item.src] = true;
+	});
+
+	/** @param {HTMLVideoElement} node @param {boolean} active */
+	function playing(node, active) {
+		const set = (/** @type {boolean} */ on) => (on ? node.play().catch(() => {}) : node.pause());
+		set(active);
+		return { update: set };
+	}
 </script>
 
 <div class="gallery">
@@ -25,23 +60,35 @@
 				class="holder"
 				class:phone={item.frame === 'phone'}
 				class:window={item.frame === 'window'}
+				class:ready={loaded[item.src]}
 			>
 				{#if item.frame === 'window'}<span class="bar" aria-hidden="true"></span>{/if}
 				{#if item.type === 'video'}
-					{#if i === index}
+					{#if i === index || shown[item.src]}
 						<video
 							src={resolve(item.src)}
 							poster={resolve(item.poster)}
-							autoplay
 							muted
 							loop
 							playsinline
+							use:ready={item.src}
+							use:playing={i === index}
 						></video>
 					{:else if item.poster}
-						<img src={resolve(item.poster)} alt={item.alt ?? alt} loading="lazy" />
+						<img
+							src={resolve(item.poster)}
+							alt={item.alt ?? alt}
+							loading="lazy"
+							use:ready={item.src}
+						/>
 					{/if}
 				{:else}
-					<img src={resolve(item.src)} alt={item.alt ?? alt} loading={i === 0 ? 'eager' : 'lazy'} />
+					<img
+						src={resolve(item.src)}
+						alt={item.alt ?? alt}
+						loading={i === 0 ? 'eager' : 'lazy'}
+						use:ready={item.src}
+					/>
 				{/if}
 			</div>
 		</div>
@@ -69,6 +116,11 @@
 	.holder {
 		width: 100%;
 		height: 100%;
+		opacity: 0;
+		transition: opacity var(--transition);
+	}
+	.holder.ready {
+		opacity: 1;
 	}
 	.holder :global(img),
 	.holder :global(video) {
